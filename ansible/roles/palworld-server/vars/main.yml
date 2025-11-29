@@ -1,10 +1,10 @@
 ---
 # Here override the palworld server settings as needed
 palworld_server_settings:
-  ServerDescription: "Palworld Serveur FR - La boulardise !"
+  ServerName: "Palworld Serveur FR - La boulardise !"
+  ServerDescription: "Serveur privé des potes à Boulard"
   ExpRate: 2.000000
   PalSpawnNumRate: 2.000000
-  DeathPenalty: None
+  DeathPenalty: "None"
   BaseCampWorkerMaxNum: 25
   bEnableInvaderEnemy: false
-  

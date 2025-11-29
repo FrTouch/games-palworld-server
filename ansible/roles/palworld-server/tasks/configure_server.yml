@@ -1,7 +1,39 @@
+- name: Ensure admin password exists
+  set_fact:
+    palworld_server_admin_password: "{{ lookup('password', '/dev/null length=20') }}"
+  when: palworld_server_admin_password | length == 0
+
+- name: Display generated admin password
+  debug:
+    msg: "Generated PalWorld Admin password: {{ palworld_server_admin_password }}"
+  when: palworld_server_admin_password | length == 20  # generated right now
+
+- name: Generate server password if requested and missing
+  set_fact:
+    palworld_server_server_password: "{{ lookup('password', '/dev/null length=12') }}"
+  when: palworld_server_generate_server_password and
+        (palworld_server_server_password | length == 0)
+
+- name: Display generated server password
+  debug:
+    msg: "Generated PalWorld Server password: {{ palworld_server_server_password }}"
+  when: palworld_server_generate_server_password and
+        (palworld_server_server_password | length == 12) # generated right now
+
+- name: Backup default Palworld server configuration file
+  ansible.builtin.copy:
+    src: "{{ palworld_server_dir }}/DefaultPalWorldSettings.ini"
+    dest: "{{ palworld_server_dir }}/DefaultPalWorldSettings.ini.bak"
+    owner: steam
+    group: steam
+    mode: '0644'
+    remote_src: yes
+  
 - name: Deploy Palworld server configuration file with custom settings
   ansible.builtin.template:
     src: PalWorldSettings.ini.j2
     dest: "{{ palworld_server_dir }}/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini"
     owner: steam
     group: steam
-    mode: '0775'
+    mode: '0644'
+  notify: Restart palworld server

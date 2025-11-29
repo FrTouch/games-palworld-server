@@ -10,3 +10,7 @@
     state: started
     enabled: true
     daemon_reload: true
+
+- name: Wait a few seconds for the Palworld server to initialize
+  ansible.builtin.pause:
+    seconds: 5
