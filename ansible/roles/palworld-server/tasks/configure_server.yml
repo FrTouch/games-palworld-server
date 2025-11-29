@@ -1,0 +1,7 @@
+- name: Deploy Palworld server configuration file with custom settings
+  ansible.builtin.template:
+    src: PalWorldSettings.ini.j2
+    dest: "{{ palworld_server_dir }}/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini"
+    owner: steam
+    group: steam
+    mode: '0775'

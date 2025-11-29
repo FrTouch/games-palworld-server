@@ -1,0 +1,5 @@
+---
+# Here override the palworld server settings as needed
+palworld_server_settings:
+  ServerDescription: "Palworld Serveur FR - La boulardise !"
+  ExpRate: 2.000000

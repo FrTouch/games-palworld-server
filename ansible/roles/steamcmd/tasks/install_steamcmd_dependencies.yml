@@ -1,0 +1,30 @@
+- name: Add multiverse and x86_64 architecture
+  ansible.builtin.apt_repository:
+    repo: "deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} multiverse"
+    state: present
+
+- name: Add i386 architecture
+  ansible.builtin.command: dpkg --add-architecture i386
+  args:
+    creates: /var/lib/dpkg/arch/i386
+
+- name: Preseed SteamCMD license responses
+  ansible.builtin.shell: |
+    echo steam steam/question select "I AGREE" | debconf-set-selections
+    echo steam steam/license note '' | debconf-set-selections
+  args:
+    executable: /bin/bash
+
+- name: Install SteamCMD packages
+  ansible.builtin.apt:
+    name: steamcmd
+    state: present
+    update_cache: yes
+
+- name: Update SteamCMD
+  ansible.builtin.command: /usr/games/steamcmd +quit
+  become: yes
+  become_user: steam
+  args:
+    chdir: /home/steam
+

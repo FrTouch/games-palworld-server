@@ -1,0 +1,2 @@
+# Defines the user that will run SteamCMD, by default 'steam'
+steamcmd_user: steam

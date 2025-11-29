@@ -1,0 +1,6 @@
+---
+- name: Import deploy SteamCMD user task
+  import_tasks: deploy_steamcmd_user.yml
+
+- name: Import SteamCMD dependancies task
+  import_tasks: install_steamcmd_dependencies.yml

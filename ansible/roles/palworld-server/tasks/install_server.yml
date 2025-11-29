@@ -1,0 +1,11 @@
+- name: Install/Update Palworld server using SteamCMD
+  ansible.builtin.command: >
+    /usr/games/steamcmd
+    +force_install_dir {{ palworld_server_dir }}
+    +login anonymous
+    +app_update 2394010 validate
+    +quit
+  become: yes
+  become_user: steam
+  args:
+    chdir: /home/steam

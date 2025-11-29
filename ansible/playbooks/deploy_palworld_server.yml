@@ -1,0 +1,7 @@
+---
+- name: Deploy Palworld server
+  hosts: all
+  become: yes
+  roles:
+    - steamcmd
+    - palworld-server

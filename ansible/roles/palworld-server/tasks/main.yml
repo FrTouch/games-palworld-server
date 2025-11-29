@@ -1,0 +1,12 @@
+---
+- name: Import Palworld environment initialization tasks
+  import_tasks: init_environment.yml
+
+- name: Import Palworld server installation tasks
+  import_tasks: install_server.yml
+
+- name: Import Palworld server configuration tasks
+  import_tasks: configure_server.yml
+
+- name: Import Palworld service setup tasks
+  import_tasks: setup_systemd.yml

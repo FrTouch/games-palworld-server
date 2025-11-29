@@ -1,0 +1,17 @@
+---
+- name: Create Palworld server directory
+  ansible.builtin.file:
+    path: "{{ palworld_server_dir }}"
+    state: directory
+    owner: steam
+    group: steam
+    mode: '0755'
+
+- name: Open necessary firewall ports for Palworld server
+  ansible.builtin.ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: udp
+    comment: "Allow Palworld server port {{ item }}"
+  loop:
+    - 8211    # Parlworld port

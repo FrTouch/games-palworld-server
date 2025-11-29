@@ -1,0 +1,6 @@
+- name: Create user for SteamCMD
+  user:
+    name: "{{ (steamcmd_user | default('steam')) }}"
+    system: yes
+    create_home: yes
+    shell: /bin/bash
