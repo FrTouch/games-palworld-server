@@ -3,3 +3,8 @@
 palworld_server_settings:
   ServerDescription: "Palworld Serveur FR - La boulardise !"
   ExpRate: 2.000000
+  PalSpawnNumRate: 2.000000
+  DeathPenalty: None
+  BaseCampWorkerMaxNum: 25
+  bEnableInvaderEnemy: false
+  
