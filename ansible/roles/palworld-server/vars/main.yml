@@ -7,4 +7,4 @@ palworld_server_settings:
   DeathPenalty: None
   BaseCampWorkerMaxNum: 25
   bEnableInvaderEnemy: false
-  
+  bAllowGlobalPalboxImport: true
