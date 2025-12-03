@@ -8,3 +8,6 @@ palworld_server_settings:
   #DeathPenalty: "None"
   #BaseCampWorkerMaxNum: 25
   #bEnableInvaderEnemy: false
+  EnemyDropItemRate: 2.500000
+  PalEggDefaultHatchingTime: 12.000000
+  CollectionDropRate: 2.000000
